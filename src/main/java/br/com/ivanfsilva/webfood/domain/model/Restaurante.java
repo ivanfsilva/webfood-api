@@ -1,17 +1,26 @@
 package br.com.ivanfsilva.webfood.domain.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Restaurante {
+@Table(name = "restaurantes")
+public class Restaurante implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(length = 30)
 	private String nome;
 
 	@Column(name = "taxa_frete")
