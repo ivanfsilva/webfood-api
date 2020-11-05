@@ -24,10 +24,10 @@ public class Restaurante {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length = 30)
+	@Column(length = 30, nullable = false)
 	private String nome;
 
-	@Column(name = "taxa_frete")
+	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
 	
 	@ManyToOne
