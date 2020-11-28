@@ -12,6 +12,8 @@ import br.com.ivanfsilva.webfood.domain.repository.RestauranteRepository;
 @Service
 public class CadastroRestauranteService {
 
+	// estudar .orElseThrow
+	
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 	
