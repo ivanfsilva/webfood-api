@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.ivanfsilva.webfood.domain.exception.EntidadeEmUsoException;
 import br.com.ivanfsilva.webfood.domain.exception.EntidadeNaoEncontradaException;
 import br.com.ivanfsilva.webfood.domain.model.Cozinha;
 import br.com.ivanfsilva.webfood.domain.repository.CozinhaRepository;
@@ -87,15 +86,20 @@ public class CozinhaController {
 //		}
 //	}
 	
+//	@DeleteMapping("/{cozinhaId}")
+//	@ResponseStatus(HttpStatus.NO_CONTENT)
+//	public void remover(@PathVariable Long cozinhaId) {
+//		try {
+//			cadastroCozinha.excluir(cozinhaId);
+//		} catch (EntidadeNaoEncontradaException e) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+//		}
+//	}
+	
 	@DeleteMapping("/{cozinhaId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long cozinhaId) {
-		try {
-			cadastroCozinha.excluir(cozinhaId);
-		} catch (EntidadeNaoEncontradaException e) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
-//			throw new ServerWebInputException(e.getMessage());
-		}
+		cadastroCozinha.excluir(cozinhaId);
 	}
 	
 }
