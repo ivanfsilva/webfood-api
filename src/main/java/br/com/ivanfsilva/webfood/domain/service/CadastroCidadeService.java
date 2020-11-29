@@ -5,12 +5,11 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import br.com.ivanfsilva.webfood.domain.exception.CidadeNaoEncontradaException;
 import br.com.ivanfsilva.webfood.domain.exception.EntidadeEmUsoException;
-import br.com.ivanfsilva.webfood.domain.exception.EntidadeNaoEncontradaException;
 import br.com.ivanfsilva.webfood.domain.model.Cidade;
 import br.com.ivanfsilva.webfood.domain.model.Estado;
 import br.com.ivanfsilva.webfood.domain.repository.CidadeRepository;
-import br.com.ivanfsilva.webfood.domain.repository.EstadoRepository;
 
 @Service
 public class CadastroCidadeService {
@@ -37,23 +36,21 @@ public class CadastroCidadeService {
 	}
 	
 	public void excluir(Long cidadeId) {
-		try {
-			cidadeRepository.deleteById(cidadeId);
-			
-		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(
-				String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId));
-
-		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoException(
-				String.format(MSG_CIDADE_EM_USO, cidadeId));
-		}
+	    try {
+	        cidadeRepository.deleteById(cidadeId);
+	        
+	    } catch (EmptyResultDataAccessException e) {
+	        throw new CidadeNaoEncontradaException(cidadeId);
+	    
+	    } catch (DataIntegrityViolationException e) {
+	        throw new EntidadeEmUsoException(
+	            String.format(MSG_CIDADE_EM_USO, cidadeId));
+	    }
 	}
-	
+
 	public Cidade buscarOuFalhar(Long cidadeId) {
 	    return cidadeRepository.findById(cidadeId)
-	        .orElseThrow(() -> new EntidadeNaoEncontradaException(
-	                String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId)));
-	} 
+	        .orElseThrow(() -> new CidadeNaoEncontradaException(cidadeId));
+	}
 	
 }
