@@ -8,6 +8,3 @@ CREATE TABLE estado (
 ALTER TABLE cidade ADD COLUMN estado_id BIGINT NOT NULL;
 ALTER TABLE cidade DROP COLUMN nome_estado;
 ALTER TABLE cidade CHANGE nome_cidade nome VARCHAR(80) NOT NULL;
-
--- ALTER TABLE cidade ADD CONSTRAINT fk_cidade_estado
--- FOREIGN KEY (estado_id) REFERENCES estado (id);
