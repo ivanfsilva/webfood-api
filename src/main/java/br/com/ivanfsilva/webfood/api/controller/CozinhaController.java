@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.ivanfsilva.webfood.domain.exception.EntidadeEmUsoException;
 import br.com.ivanfsilva.webfood.domain.exception.EntidadeNaoEncontradaException;
@@ -71,18 +72,29 @@ public class CozinhaController {
 		return ResponseEntity.notFound().build();
 	}
 	
+//	@DeleteMapping("/{cozinhaId}")
+//	public ResponseEntity<?> remover(@PathVariable Long cozinhaId) {
+//		try {
+//			cadastroCozinha.excluir(cozinhaId);	
+//			return ResponseEntity.noContent().build();
+//			
+//		} catch (EntidadeNaoEncontradaException e) {
+//			return ResponseEntity.notFound().build();
+//			
+//		} catch (EntidadeEmUsoException e) {
+//			return ResponseEntity.status(HttpStatus.CONFLICT)
+//					.body(e.getMessage());
+//		}
+//	}
+	
 	@DeleteMapping("/{cozinhaId}")
-	public ResponseEntity<?> remover(@PathVariable Long cozinhaId) {
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void remover(@PathVariable Long cozinhaId) {
 		try {
-			cadastroCozinha.excluir(cozinhaId);	
-			return ResponseEntity.noContent().build();
-			
+			cadastroCozinha.excluir(cozinhaId);
 		} catch (EntidadeNaoEncontradaException e) {
-			return ResponseEntity.notFound().build();
-			
-		} catch (EntidadeEmUsoException e) {
-			return ResponseEntity.status(HttpStatus.CONFLICT)
-					.body(e.getMessage());
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+//			throw new ServerWebInputException(e.getMessage());
 		}
 	}
 	
