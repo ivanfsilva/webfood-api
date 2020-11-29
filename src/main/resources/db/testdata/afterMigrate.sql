@@ -1,3 +1,18 @@
+
+-- exemplo de comando que faz o que o restante do script faz.
+-- o comando TRUNCATE SQL exclui todos os dados de uma tabela e zera o recurso de auto incremento.
+
+
+
+-- set foreign_key_checks = 0;
+
+-- truncate table cidade;
+-- truncate table cozinha;
+-- truncate table estado;...
+
+-- set foreign_key_checks = 1;
+
+
 set foreign_key_checks = 0;
 
 delete from cidade;
