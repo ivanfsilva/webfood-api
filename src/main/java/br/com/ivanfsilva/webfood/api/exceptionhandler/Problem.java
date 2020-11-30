@@ -14,8 +14,10 @@ import lombok.Getter;
 public class Problem {
 	
 	private Integer status;
+	private LocalDateTime timestamp;
 	private String type;
 	private String title;
 	private String detail;
+	private String userMessage;
 
 }
