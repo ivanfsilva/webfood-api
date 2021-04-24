@@ -2,6 +2,7 @@ package br.com.ivanfsilva.webfood.domain.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.ivanfsilva.webfood.domain.exception.RestauranteNaoEncontradoException;
 import br.com.ivanfsilva.webfood.domain.model.Cozinha;
@@ -19,6 +20,7 @@ public class CadastroRestauranteService {
 	@Autowired
 	private CadastroCozinhaService cadastroCozinha;
 	
+	@Transactional
 	public Restaurante salvar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
 		

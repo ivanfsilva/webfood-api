@@ -1,28 +1,14 @@
-package br.com.ivanfsilva.webfood.api.controller;
+package br.com.ivanfsilva.webfood;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hamcrest.Matchers;
-import org.junit.Test;
-import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import br.com.ivanfsilva.webfood.domain.model.Cozinha;
+import br.com.ivanfsilva.webfood.api.controller.CozinhaController;
 
 @SpringBootTest(
 		webEnvironment = WebEnvironment.MOCK,

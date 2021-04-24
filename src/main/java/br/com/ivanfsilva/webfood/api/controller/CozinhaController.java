@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
-import br.com.ivanfsilva.webfood.domain.exception.EntidadeNaoEncontradaException;
 import br.com.ivanfsilva.webfood.domain.model.Cozinha;
 import br.com.ivanfsilva.webfood.domain.repository.CozinhaRepository;
 import br.com.ivanfsilva.webfood.domain.service.CadastroCozinhaService;

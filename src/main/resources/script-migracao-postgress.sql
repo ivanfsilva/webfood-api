@@ -30,69 +30,66 @@ create table cidade (
 	
 );
 
-
-
 V004__cria-varias-tabelas.sql
-create table forma_pagamento (
-id  bigserial not null, 
-descricao varchar(60) not null, 
-primary key (id));
+	create table forma_pagamento (
+	id  bigserial not null, 
+	descricao varchar(60) not null, 
+	primary key (id));
 
 create table grupo (
-id  bigserial not null, 
-nome varchar(60) not null, 
-primary key (id));
+	id  bigserial not null, 
+	nome varchar(60) not null, 
+	primary key (id));
 
 create table grupo_permissao (
-grupo_id int8 not null, 
-permissao_id int8 not null);
+	grupo_id int8 not null, 
+	permissao_id int8 not null);
 
 create table permissao (
-id  bigserial not null, 
-descricao varchar(60) not null, 
-nome varchar(100) not null, 
-primary key (id));
+	id  bigserial not null, 
+	descricao varchar(60) not null, 
+	nome varchar(100) not null, 
+	primary key (id));
 
 create table produto (
-id  bigserial not null, 
-ativo boolean not null, 
-descricao text not null, 
-nome varchar(80) not null, 
-preco decimal(10, 2) not null, 
-restaurante_id int8 not null, 
-primary key (id));
+	id  bigserial not null, 
+	ativo boolean not null, 
+	descricao text not null, 
+	nome varchar(80) not null, 
+	preco decimal(10, 2) not null, 
+	restaurante_id int8 not null, 
+	primary key (id));
 
 create table restaurante (
-id  bigserial not null, 
-data_atualizacao timestamp not null, 
-data_cadastro timestamp not null, 
-
-endereco_bairro varchar(60), 
-endereco_cep varchar(9), 
-endereco_complemento varchar(60), 
-endereco_logradouro varchar(100), 
-endereco_numero varchar(20), 
-nome varchar(80) not null, 
-taxa_frete decimal (10, 2) not null, 
-cozinha_id int8 not null, 
-endereco_cidade_id int8, 
-primary key (id));
+	id  bigserial not null, 
+	data_atualizacao timestamp not null, 
+	data_cadastro timestamp not null, 
+	endereco_bairro varchar(60), 
+	endereco_cep varchar(9), 
+	endereco_complemento varchar(60), 
+	endereco_logradouro varchar(100), 
+	endereco_numero varchar(20), 
+	nome varchar(80) not null, 
+	taxa_frete decimal (10, 2) not null, 
+	cozinha_id int8 not null, 
+	endereco_cidade_id int8, 
+	primary key (id));
 
 create table restaurante_forma_pagamento (
-restaurante_id int8 not null, 
-forma_pagamento_id int8 not null);
+	restaurante_id int8 not null, 
+	forma_pagamento_id int8 not null);
 
 create table usuario (
-id  bigserial not null, 
-data_cadastro timestamp not null, 
-email varchar(255) not null, 
-nome varchar(80) not null, 
-senha varchar(255) not null, 
-primary key (id));
+	id  bigserial not null, 
+	data_cadastro timestamp not null, 
+	email varchar(255) not null, 
+	nome varchar(80) not null, 
+	senha varchar(255) not null, 
+	primary key (id));
 
 create table usuario_grupo (
-usuario_id int8 not null,
-grupo_id int8 not null);
+	usuario_id int8 not null,
+	grupo_id int8 not null);
 
 alter table grupo_permissao add constraint fk_grupo_permissao_permissao
 foreign key (permissao_id) references permissao;

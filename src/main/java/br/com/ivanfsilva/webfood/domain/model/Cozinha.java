@@ -9,10 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import br.com.ivanfsilva.webfood.core.validation.Groups;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -21,6 +20,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Cozinha {
 
+	@NotNull(groups = Groups.CozinhaId.class)
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,6 @@ public class Cozinha {
 	@Column(nullable = false)
 	private String nome;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "cozinha")
 	private List<Restaurante> restaurantes = new ArrayList<>();
 	
