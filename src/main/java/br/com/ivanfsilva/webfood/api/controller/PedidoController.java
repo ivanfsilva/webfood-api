@@ -25,7 +25,9 @@ import br.com.ivanfsilva.webfood.domain.exception.NegocioException;
 import br.com.ivanfsilva.webfood.domain.model.Pedido;
 import br.com.ivanfsilva.webfood.domain.model.Usuario;
 import br.com.ivanfsilva.webfood.domain.repository.PedidoRepository;
+import br.com.ivanfsilva.webfood.domain.repository.filter.PedidoFilter;
 import br.com.ivanfsilva.webfood.domain.service.EmissaoPedidoService;
+import br.com.ivanfsilva.webfood.infrastrutucture.repository.spec.PedidoSpecs;
 
 @RestController
 @RequestMapping(value = "/pedidos")
@@ -47,8 +49,8 @@ public class PedidoController {
 	private PedidoInputDisassembler pedidoInputDisassembler;
 	
 	@GetMapping
-	public List<PedidoResumoModel> listar() {
-		List<Pedido> todosPedidos = pedidoRepository.findAll();
+	public List<PedidoResumoModel> pesquisar(PedidoFilter filtro) {
+		List<Pedido> todosPedidos = pedidoRepository.findAll(PedidoSpecs.usandoFiltro(filtro));
 		
 		return pedidoResumoModelAssembler.toCollectionModel(todosPedidos);
 	}
