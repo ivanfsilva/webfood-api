@@ -13,22 +13,22 @@ import lombok.Getter;
 @Getter
 @Builder
 public class Problem {
-	
+
 	private Integer status;
-	private OffsetDateTime  timestamp;
+	private OffsetDateTime timestamp;
 	private String type;
 	private String title;
 	private String detail;
 	private String userMessage;
-	private List<Field> fields;
+	private List<Object> objects;
 	
 	@Getter
 	@Builder
-	public static class Field {
+	public static class Object {
 		
 		private String name;
 		private String userMessage;
 		
 	}
-
+	
 }
