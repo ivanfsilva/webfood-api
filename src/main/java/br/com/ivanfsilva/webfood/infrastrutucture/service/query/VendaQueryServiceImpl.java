@@ -1,4 +1,4 @@
-package br.com.ivanfsilva.webfood.infrastrutucture.service;
+package br.com.ivanfsilva.webfood.infrastrutucture.service.query;
 
 import java.util.ArrayList;
 import java.util.Date;
